@@ -1,0 +1,186 @@
+.productsPage {
+    overflow: hidden;
+}
+
+/* Hero Section - Industrial Style */
+.hero {
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-alt) 50%, var(--color-blue-dark) 100%);
+    padding: var(--space-5xl) 0 var(--space-3xl);
+    text-align: center;
+    color: var(--color-bg-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    z-index: 0;
+}
+
+.heroContent {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.badge {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: rgba(200, 16, 46, 0.15);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    margin-bottom: var(--space-lg);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 5vw, 52px);
+    margin-bottom: var(--space-lg);
+    color: var(--color-bg-white);
+    font-weight: var(--font-weight-extrabold);
+    line-height: 1.15;
+}
+
+.hero p {
+    font-size: var(--font-size-lg);
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Categories */
+.categories {
+    background-color: var(--color-bg-white);
+    padding: var(--space-xl) 0;
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+}
+
+.categoryGrid {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.categoryCard {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-xl);
+    background-color: var(--color-bg-light);
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    border: 2px solid transparent;
+}
+
+.categoryCard:hover,
+.categoryCardActive {
+    background-color: var(--color-bg-white);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.categoryCardActive {
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+}
+
+.categoryCardActive:hover {
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+}
+
+.categoryIcon {
+    font-size: 24px;
+}
+
+.categoryName {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Products Section */
+.productsSection {
+    background-color: var(--color-bg-light);
+    padding: var(--space-4xl) 0;
+}
+
+.productGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+}
+
+/* CTA Section */
+.cta {
+    background: linear-gradient(135deg, var(--color-dark) 0%, #1a2634 100%);
+    padding: var(--space-4xl) 0;
+    text-align: center;
+    color: var(--color-bg-white);
+}
+
+.ctaContent h2 {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--space-md);
+    color: var(--color-bg-white);
+}
+
+.ctaContent p {
+    font-size: var(--font-size-lg);
+    opacity: 0.8;
+    margin-bottom: var(--space-xl);
+}
+
+.ctaButtons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+}
+
+.ctaButtons a:last-child {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--color-bg-white);
+}
+
+.ctaButtons a:last-child:hover {
+    background-color: var(--color-bg-white);
+    color: var(--color-text);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .productGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .categoryGrid {
+        justify-content: flex-start;
+    }
+
+    .categoryCard {
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    .productGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .ctaButtons {
+        flex-direction: column;
+        align-items: center;
+    }
+}

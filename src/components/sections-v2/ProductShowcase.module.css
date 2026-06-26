@@ -1,0 +1,398 @@
+.showcase {
+    background-color: var(--color-bg-light); /* off-white/gray color to contrast with the dark hero section */
+    padding: var(--space-3xl) 0;
+    position: relative;
+    z-index: 10;
+}
+
+/* Header Row for Section Title & Carousel Nav Buttons */
+.sectionHeaderRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--space-xl);
+    gap: var(--space-md);
+}
+
+.carouselNav {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 8px; /* Alignment adjustment */
+}
+
+/* Elegant Circular Nav Buttons */
+.navBtn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-bg-white);
+    color: var(--color-text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 300ms ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.navBtn:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(200, 16, 46, 0.2);
+}
+
+.navBtn:active {
+    transform: translateY(0);
+}
+
+/* Grid Layout Container */
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: var(--space-xl);
+}
+
+/* Keyframe Animations */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.2);
+        background-color: rgba(16, 185, 129, 0.1);
+    }
+    100% {
+        box-shadow: 0 0 12px 2px rgba(16, 185, 129, 0.4);
+        background-color: rgba(16, 185, 129, 0.2);
+    }
+}
+
+/* Premium Product Card with staggered load and hover lift */
+.card {
+    background-color: var(--color-bg-white, #ffffff);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--color-border, #e2e8f0);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    opacity: 0;
+    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Lift upward by 10px */
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.16); /* Increased shadow */
+}
+
+/* Card Top (Single Continuous Dark Premium Industrial Surface) */
+.cardTop {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 310px;
+    /* One premium dark industrial gradient background covering the full top area */
+    background: linear-gradient(135deg, #11151C 0%, #1B212D 55%, #232B38 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Left Side (35%) - Highlights specifications panel with no separate container/divider box */
+.highlightsPanel {
+    width: 35%;
+    padding: 24px 8px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.overlayTitle {
+    font-size: 12px;
+    font-weight: 700; /* Bold White */
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #FFFFFF;
+    margin: 0 0 6px 0;
+}
+
+.overlayDivider {
+    width: 24px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.15); /* subtle divider line */
+    margin-bottom: 12px;
+}
+
+/* Specification list formatting */
+.specList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.specItem {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15); /* subtle divider line */
+    box-sizing: border-box;
+}
+
+.specItem:last-child {
+    border-bottom: none;
+}
+
+.specHeader {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 2px;
+    color: rgba(255, 255, 255, 0.65); /* white icons */
+}
+
+.specIcon {
+    width: 11px;
+    height: 11px;
+    fill: currentColor;
+    flex-shrink: 0;
+}
+
+.specLabel {
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.65); /* Labels */
+}
+
+.specValue {
+    font-size: 11px;
+    font-weight: 500;
+    color: #FFFFFF; /* Values */
+    line-height: 1.2;
+}
+
+/* Right Side (65%) - Image Panel (Naturally blended with same background) */
+.imagePanel {
+    position: relative;
+    width: 65%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: hidden; /* Clip zoomed image within dark panel bounds */
+    background: transparent; /* Ensure seamless dark background */
+}
+
+/* Spotlight glow behind the machine */
+.spotlight {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, rgba(16, 21, 29, 0) 70%);
+    z-index: 1;
+    pointer-events: none;
+    transition: transform 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth parallax response */
+}
+
+/* Grounded shadow below the machine */
+.machineShadow {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65%;
+    height: 12px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 80%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Inner wrapper handling high-performance JS cursor parallax translation */
+.imageParallaxWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    transition: transform 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth parallax translation */
+}
+
+/* Product image sits inside here, scaled up and vertically centered */
+.imageContainer {
+    position: relative;
+    width: 90%;
+    height: 75%; /* Product occupies around 75% of available height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; /* Ensure no white box appears */
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center center;
+}
+
+/* Enlarge image when hovering anywhere on the card */
+.card:hover .imageContainer {
+    transform: scale(1.18); /* Smooth zoom in on card hover */
+}
+
+.image {
+    object-fit: contain;
+    mix-blend-mode: screen; /* White backgrounds in product photos become transparent on the dark panel */
+    filter: brightness(1.05) contrast(1.1) drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35));
+    transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Top-Right green badge */
+.badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background-color: rgba(16, 185, 129, 0.1);
+    border: 1px solid #10b981;
+    color: #10b981;
+    font-size: 8px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    z-index: 4;
+    animation: float 3s ease-in-out infinite; /* Soft float animation */
+    transition: all 0.3s ease;
+}
+
+.card:hover .badge {
+    animation: float 3s ease-in-out infinite, pulse 1.5s infinite alternate; /* soft pulse on card hover */
+}
+
+/* Bottom White Content Section */
+.cardContent {
+    padding: 24px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-grow: 1; /* Stretch to occupy remaining card height */
+    box-sizing: border-box;
+}
+
+.productName {
+    font-size: 18px;
+    font-weight: 700;
+    color: #10151D;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.productDescription {
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+    flex-grow: 1;
+    max-width: 95%;
+}
+
+/* Button wrapper and rounded pill styling */
+.ctaWrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+.ctaButton {
+    background-color: var(--color-primary, #c8102e) !important; /* Brand Red */
+    color: #ffffff !important;
+    font-size: var(--font-size-sm, 14px) !important;
+    font-weight: 700 !important;
+    padding: 10px 24px !important;
+    border-radius: 30px !important; /* Pill shape */
+    width: 65% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    border: none !important;
+    box-shadow: 0 4px 10px rgba(200, 16, 46, 0.15) !important;
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), background-color 300ms ease, box-shadow 300ms ease !important;
+}
+
+.ctaButton:hover {
+    background-color: #a30e25 !important;
+    transform: scale(1.03) translateY(-4px) !important; /* Scale 1.03 and lift 4px */
+    box-shadow: 0 6px 18px rgba(200, 16, 46, 0.3), 0 0 10px rgba(200, 16, 46, 0.25) !important; /* Glow shadow */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .gridContainer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gridContainer {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .card {
+        max-width: 450px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .cardTop {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .highlightsPanel {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 20px;
+    }
+    
+    .imagePanel {
+        width: 100%;
+        height: 200px;
+    }
+}

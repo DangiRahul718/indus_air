@@ -1,0 +1,595 @@
+.productPage {
+    background-color: var(--color-bg-white);
+}
+
+/* Hero Banner */
+.heroBanner {
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-alt) 50%, var(--color-blue-dark) 100%);
+    padding: var(--space-5xl) 0 var(--space-3xl);
+    color: var(--color-bg-white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.heroBanner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    z-index: 0;
+}
+
+.heroBannerContent {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.categoryBadge {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: rgba(200, 16, 46, 0.2);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--space-lg);
+}
+
+.heroBanner h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: var(--font-weight-extrabold);
+    margin-bottom: var(--space-md);
+    line-height: 1.2;
+    color: var(--color-bg-white);
+}
+
+.heroBanner p {
+    font-size: var(--font-size-lg);
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+    line-height: 1.7;
+}
+
+.heroCtas {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+}
+
+.heroCtas a:last-child {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--color-bg-white);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    background-color: var(--color-bg-light);
+    padding: var(--space-md) 0;
+    font-size: var(--font-size-sm);
+}
+
+.breadcrumb>div {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.breadcrumb a {
+    color: var(--color-text-light);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    color: var(--color-primary);
+}
+
+.breadcrumb span:not(:last-child) {
+    color: var(--color-text-light);
+}
+
+.breadcrumb span:last-child {
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Product Main Section */
+.productMain {
+    padding: var(--space-3xl) 0;
+}
+
+.productGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: start;
+}
+
+.productGallery {
+    position: sticky;
+    top: calc(var(--header-height) + 20px);
+}
+
+/* Product Quick Info */
+.productQuickInfo {
+    padding: var(--space-xl);
+    background-color: var(--color-bg-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-3d);
+}
+
+.productQuickInfo h2 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-md);
+    color: var(--color-text);
+}
+
+.shortDesc {
+    font-size: var(--font-size-base);
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: var(--space-xl);
+}
+
+/* Quick Specs */
+.quickSpecs {
+    margin-bottom: var(--space-xl);
+    padding: var(--space-lg);
+    background-color: var(--color-bg-light);
+    border-radius: var(--radius-lg);
+}
+
+.quickSpecs h4 {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-md);
+    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.specsList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+}
+
+.specItem {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-sm);
+    background-color: var(--color-bg-white);
+    border-radius: var(--radius-md);
+}
+
+.specLabel {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.specValue {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+}
+
+/* Action Buttons */
+.actionButtons {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.quoteBtn {
+    flex: 1;
+}
+
+/* Trust Badges */
+.trustBadges {
+    display: flex;
+    gap: var(--space-md);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+}
+
+.badge span:first-child {
+    font-size: 20px;
+}
+
+/* Tabs Section */
+.tabsSection {
+    background-color: var(--color-bg-light);
+}
+
+/* Screw Applications Section */
+.screwApplicationsSection {
+    background-color: var(--color-bg-white);
+}
+
+.applicationsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+}
+
+.applicationCard {
+    padding: var(--space-xl);
+    background-color: var(--color-bg-light);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.applicationCard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-3d-hover);
+}
+
+.applicationTitle {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.applicationUsage {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    margin: 0;
+}
+
+/* Benefits Section */
+.benefitsSection {
+    background-color: var(--color-bg-light);
+}
+
+.benefitsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+}
+
+.benefitCard {
+    display: flex;
+    align-items: center;
+    padding: var(--space-lg);
+    background-color: var(--color-bg-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.benefitCard:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-3d-hover);
+}
+
+.benefitIcon {
+    font-size: 24px;
+    color: var(--color-primary);
+    margin-right: var(--space-md);
+    flex-shrink: 0;
+}
+
+.benefitCard p {
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    margin: 0;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Product FAQ Section */
+.productFaqSection {
+    background-color: var(--color-bg-white);
+}
+
+.faqContent {
+    max-width: 100%;
+    margin-top: var(--space-xl);
+}
+
+/* Section Title */
+.sectionTitle {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    margin-bottom: var(--space-xl);
+    color: var(--color-text);
+}
+
+/* Video Section */
+.videoSection {
+    background-color: var(--color-bg-white);
+}
+
+.videoWrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-3d);
+    background-color: var(--color-dark);
+}
+
+.productVideo {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Applications Section */
+.applicationsSection {
+    background-color: var(--color-bg-white);
+}
+
+.appGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+}
+
+.appCard {
+    text-align: center;
+    padding: var(--space-xl);
+    background-color: var(--color-bg-light);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-card);
+}
+
+.appCard:hover {
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-3d-hover);
+}
+
+.appIcon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: var(--space-md);
+}
+
+.appCard h4 {
+    font-size: var(--font-size-base);
+    margin: 0;
+}
+
+/* Related Section */
+.relatedSection {
+    background-color: var(--color-bg-light);
+}
+
+.relatedGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+}
+
+.relatedCard {
+    text-decoration: none;
+    background-color: var(--color-bg-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-card);
+}
+
+.relatedCard:hover {
+    box-shadow: var(--shadow-3d-hover);
+    transform: translateY(-5px);
+}
+
+.relatedImage {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background-color: var(--color-bg-light);
+}
+
+.relatedImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+}
+
+.relatedCard:hover .relatedImage img {
+    transform: scale(1.08);
+}
+
+.relatedInfo {
+    padding: var(--space-lg);
+}
+
+.relatedInfo h4 {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--space-sm);
+    color: var(--color-text);
+}
+
+.relatedInfo p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    line-height: 1.5;
+    margin-bottom: var(--space-sm);
+}
+
+.viewMore {
+    font-size: var(--font-size-sm);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* CTA Section */
+.ctaSection {
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-blue-dark) 100%);
+    padding: var(--space-4xl) 0;
+    text-align: center;
+    color: var(--color-bg-white);
+}
+
+.ctaContent h2 {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--space-md);
+    color: var(--color-bg-white);
+}
+
+.ctaContent p {
+    font-size: var(--font-size-lg);
+    opacity: 0.85;
+    margin-bottom: var(--space-xl);
+}
+
+.ctaButtons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+}
+
+.ctaButtons a:last-child {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--color-bg-white);
+}
+
+.ctaButtons a:last-child:hover {
+    background-color: var(--color-bg-white);
+    color: var(--color-text);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .productGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .productGallery {
+        position: static;
+    }
+
+    .appGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .applicationsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .benefitsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .relatedGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .heroCtas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .productMain {
+        padding: var(--space-xl) 0;
+    }
+
+    .productQuickInfo {
+        padding: var(--space-md);
+        margin: 0;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .productQuickInfo h2 {
+        font-size: var(--font-size-2xl);
+        word-wrap: break-word;
+    }
+
+    .shortDesc {
+        font-size: var(--font-size-sm);
+    }
+
+    .quickSpecs {
+        padding: var(--space-md);
+    }
+
+    .quickSpecs h4 {
+        font-size: var(--font-size-sm);
+    }
+
+    .specsList {
+        grid-template-columns: 1fr;
+    }
+
+    .specItem {
+        padding: var(--space-xs);
+    }
+
+    .specLabel {
+        font-size: 10px;
+    }
+
+    .specValue {
+        font-size: var(--font-size-sm);
+    }
+
+    .actionButtons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .actionButtons a,
+    .actionButtons button {
+        width: 100%;
+    }
+
+    .trustBadges {
+        flex-direction: column;
+        gap: var(--space-sm);
+        align-items: flex-start;
+    }
+
+    .appGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .applicationsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .benefitsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .relatedGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .ctaButtons {
+        flex-direction: column;
+        align-items: center;
+    }
+}

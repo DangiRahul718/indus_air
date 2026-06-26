@@ -1,0 +1,227 @@
+/* ============================================================
+   Quality Control Section – QualityControl.module.css
+   ============================================================ */
+
+/* ── Section wrapper ── */
+.qualitySection {
+    background-color: var(--color-bg-light);
+    padding: var(--space-3xl) 0 var(--space-4xl);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle top accent strip */
+.qualitySection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, #ff4d6d 40%, transparent 100%);
+}
+
+/* Background geometric accent */
+.qualitySection::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200, 16, 46, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* ── Section Header ── */
+.sectionHeader {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+    position: relative;
+    z-index: 1;
+}
+
+.sectionTitle {
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-text);
+    margin: 0 0 12px;
+    letter-spacing: -0.4px;
+    line-height: 1.2;
+}
+
+/* Red underline accent */
+.titleAccent {
+    width: 48px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, #ff4d6d 100%);
+    border-radius: var(--radius-full);
+    margin: 0 auto 18px;
+    animation: growLine 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes growLine {
+    from { width: 0; opacity: 0; }
+    to   { width: 48px; opacity: 1; }
+}
+
+.sectionSubtitle {
+    font-size: var(--font-size-base);
+    color: var(--color-text-light);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ── Checks Grid – 4 columns on desktop ── */
+.checksGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Individual Check Card ── */
+.checkCard {
+    background-color: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 20px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    cursor: default;
+
+    /* Entry animation – overridden by GSAP */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: cardReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+    transition:
+        transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 300ms ease,
+        border-color 300ms ease;
+}
+
+@keyframes cardReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.checkCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+    border-color: rgba(16, 185, 129, 0.35);
+}
+
+/* ── Check icon wrapper ── */
+.iconWrapper {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.checkCard:hover .iconWrapper {
+    transform: scale(1.25);
+}
+
+.checkIcon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+}
+
+/* ── Check title ── */
+.checkTitle {
+    font-size: 13px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* ── ISO Certification Badge ── */
+.isoBadge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: var(--space-2xl);
+    padding: 18px 32px;
+    background: var(--color-bg-white);
+    border: 1px solid var(--color-border);
+    border-radius: 50px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+
+    /* Subtle red left border */
+    border-left: 4px solid var(--color-primary);
+}
+
+.isoIcon {
+    font-size: 28px;
+    line-height: 1;
+}
+
+.isoText {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.isoText strong {
+    font-size: 15px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    letter-spacing: 0.3px;
+}
+
+.isoText span {
+    font-size: 12px;
+    color: var(--color-text-light);
+    font-weight: var(--font-weight-medium);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* Tablet – 2 columns */
+@media (max-width: 1024px) {
+    .checksGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+}
+
+/* Mobile – single column */
+@media (max-width: 640px) {
+    .checksGrid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .checkCard {
+        padding: 16px 14px;
+    }
+
+    .isoBadge {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 24px;
+        border-left: none;
+        border-top: 4px solid var(--color-primary);
+        border-radius: 16px;
+    }
+}

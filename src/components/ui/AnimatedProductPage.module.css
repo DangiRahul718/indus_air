@@ -1,0 +1,15 @@
+.animatedContainer {
+    overflow-x: hidden;
+}
+
+/* Add perspective for 3D effects */
+.animatedContainer :global(.animate-gallery),
+.animatedContainer :global(.animate-quick-info) {
+    transform-style: preserve-3d;
+    will-change: transform, opacity;
+}
+
+/* Smooth transitions */
+.animatedContainer * {
+    backface-visibility: hidden;
+}

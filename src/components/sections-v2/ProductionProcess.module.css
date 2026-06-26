@@ -1,0 +1,349 @@
+/* ============================================================
+   Production Process Section – ProductionProcess.module.css
+   ============================================================ */
+
+/* ── Section Wrapper ── */
+.processSection {
+    background-color: var(--color-bg-white);
+    padding: var(--space-3xl) 0 var(--space-4xl);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle diagonal background texture */
+.processSection::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, rgba(200, 16, 46, 0.025) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(200, 16, 46, 0.04) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* ── Section Header ── */
+.sectionHeader {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+    position: relative;
+}
+
+.sectionTitle {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-text);
+    margin: 0 0 14px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+/* Red underline accent bar */
+.titleAccent {
+    width: 52px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, #ff4d6d 100%);
+    border-radius: var(--radius-full);
+    margin: 0 auto 20px;
+    animation: growAccent 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes growAccent {
+    from { width: 0; opacity: 0; }
+    to   { width: 52px; opacity: 1; }
+}
+
+.sectionSubtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-light);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ── Timeline wrapper – relative parent for the track line ── */
+.timelineWrapper {
+    position: relative;
+    padding-top: 16px;
+}
+
+/* Horizontal track line sitting at center of number circles */
+.connectorTrack {
+    position: absolute;
+    top: 52px; /* aligns with center of 48px circles + 16px padding-top */
+    left: calc(100% / 12);   /* trim flush with first/last step centers */
+    right: calc(100% / 12);
+    height: 2px;
+    background: var(--color-border);
+    border-radius: 2px;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Animated red fill on scroll (driven by GSAP scaleX) */
+.connectorFill {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--color-primary) 0%, #ff4d6d 100%);
+    transform-origin: left center;
+    transform: scaleX(0);
+    border-radius: 2px;
+}
+
+/* ── 6-column desktop grid ── */
+.stepsGrid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Individual Step Card ── */
+.stepCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 10px 36px;
+    position: relative;
+    cursor: default;
+
+    /* Entry animation – overridden by GSAP */
+    opacity: 0;
+    transform: translateY(40px);
+    animation: stepFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes stepFadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Number circle + arrow row ── */
+.stepNumberWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 18px;
+    position: relative;
+}
+
+/* Red circle */
+.stepNumber {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 2;
+    position: relative;
+    box-shadow: 0 4px 14px rgba(200, 16, 46, 0.35);
+    transition: transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 350ms ease;
+}
+
+.stepNumber:hover,
+.stepCard:hover .stepNumber {
+    transform: scale(1.2);
+    box-shadow: 0 8px 22px rgba(200, 16, 46, 0.5);
+}
+
+.stepNum {
+    font-size: 18px;
+    font-weight: var(--font-weight-extrabold);
+    color: #ffffff;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+/* Arrow connector SVG (hidden on last step via JS) */
+.arrowConnector {
+    position: absolute;
+    right: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 14px;
+    z-index: 1;
+}
+
+.arrowSvg {
+    width: 100%;
+    height: 100%;
+    color: var(--color-primary);
+    opacity: 0.55;
+}
+
+/* ── Step icon ── */
+.stepIconWrapper {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--color-bg-light);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    transition: background 300ms ease, border-color 300ms ease, transform 300ms ease;
+}
+
+.stepCard:hover .stepIconWrapper {
+    background: var(--color-primary-light);
+    border-color: rgba(200, 16, 46, 0.3);
+    transform: translateY(-3px);
+}
+
+.stepIcon {
+    font-size: 26px;
+    line-height: 1;
+}
+
+/* ── Step text ── */
+.stepTitle {
+    font-size: 13px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin: 0 0 8px;
+    line-height: 1.35;
+    letter-spacing: 0.1px;
+}
+
+.stepDescription {
+    font-size: 11.5px;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0;
+    flex-grow: 1;
+}
+
+/* ── Red bottom accent line (animated on hover) ── */
+.stepAccentLine {
+    position: absolute;
+    bottom: 12px;
+    left: 20%;
+    right: 20%;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: var(--radius-full);
+    transform: scaleX(0);
+    opacity: 0;
+    transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 350ms ease;
+    transform-origin: center;
+}
+
+.stepCard:hover .stepAccentLine {
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+/* Tablet – 3 + 3 */
+@media (max-width: 1024px) {
+    .stepsGrid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        row-gap: 32px;
+    }
+
+    /* Hide connector track on tablet (too complex for 2 rows) */
+    .connectorTrack {
+        display: none;
+    }
+
+    /* Also hide the inline arrow SVG connectors on 3rd and 6th steps */
+    .stepCard:nth-child(3) .arrowConnector,
+    .stepCard:nth-child(6) .arrowConnector {
+        display: none;
+    }
+}
+
+/* Mobile – vertical timeline */
+@media (max-width: 640px) {
+    .stepsGrid {
+        grid-template-columns: 1fr;
+        gap: 0;
+        row-gap: 0;
+    }
+
+    .connectorTrack {
+        display: none;
+    }
+
+    /* Vertical card layout */
+    .stepCard {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--color-border);
+        gap: 18px;
+    }
+
+    .stepCard:last-child {
+        border-bottom: none;
+    }
+
+    /* Number + arrow column */
+    .stepNumberWrapper {
+        flex-direction: column;
+        align-items: center;
+        width: 48px;
+        flex-shrink: 0;
+        margin-bottom: 0;
+        gap: 0;
+    }
+
+    /* Vertical dashed connector line */
+    .stepNumberWrapper::after {
+        content: '';
+        display: block;
+        width: 2px;
+        flex-grow: 1;
+        min-height: 30px;
+        background: repeating-linear-gradient(
+            to bottom,
+            var(--color-primary) 0px,
+            var(--color-primary) 4px,
+            transparent 4px,
+            transparent 8px
+        );
+        margin-top: 6px;
+        opacity: 0.4;
+    }
+
+    .stepCard:last-child .stepNumberWrapper::after {
+        display: none;
+    }
+
+    .arrowConnector {
+        display: none;
+    }
+
+    /* Align text column */
+    .stepIconWrapper {
+        margin-bottom: 10px;
+    }
+
+    .stepAccentLine {
+        display: none;
+    }
+
+    .stepTitle {
+        font-size: 14px;
+    }
+
+    .stepDescription {
+        font-size: 12px;
+    }
+}

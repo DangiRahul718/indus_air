@@ -1,0 +1,441 @@
+{
+    "products": [
+        {
+            "slug": "screw-air-compressor",
+            "product_name": "Screw Air Compressor",
+            "short_description": "High-performance rotary screw air compressors for industrial applications",
+            "overview": "Professional screw air compressors with superior efficiency and reliability for continuous industrial use.",
+            "features": [
+                "High Efficiency Motor",
+                "Low Noise Operation",
+                "Energy Saving Design",
+                "Easy Maintenance",
+                "Variable Frequency Drive Available"
+            ],
+            "applications": [
+                "Manufacturing",
+                "Automotive",
+                "Construction",
+                "Pharmaceutical"
+            ],
+            "technical_specifications": {
+                "pressure": "7-13 bar",
+                "capacity": "1.0-14 m³/min",
+                "power": "7.5kW - 75kW",
+                "other": [
+                    "Air Cooled",
+                    "Low Oil Content"
+                ]
+            },
+            "advantages": [
+                "20+ years manufacturing experience",
+                "ISO 9001:2000 certified",
+                "24/7 technical support",
+                "1-2 year warranty"
+            ],
+            "downloads": [
+                {
+                    "title": "7.5kW Specifications",
+                    "file": "/products/screw-air-compressor/7.5kw.doc"
+                },
+                {
+                    "title": "11kW Specifications",
+                    "file": "/products/screw-air-compressor/11kw.doc"
+                },
+                {
+                    "title": "15kW Specifications",
+                    "file": "/products/screw-air-compressor/15kw.doc"
+                },
+                {
+                    "title": "18.5kW Specifications",
+                    "file": "/products/screw-air-compressor/18.5kw.doc"
+                },
+                {
+                    "title": "22kW Specifications",
+                    "file": "/products/screw-air-compressor/22kw.doc"
+                },
+                {
+                    "title": "30kW Specifications",
+                    "file": "/products/screw-air-compressor/30kw.doc"
+                },
+                {
+                    "title": "37kW Specifications",
+                    "file": "/products/screw-air-compressor/37kw.doc"
+                },
+                {
+                    "title": "45kW Specifications",
+                    "file": "/products/screw-air-compressor/45kw.doc"
+                },
+                {
+                    "title": "55kW Specifications",
+                    "file": "/products/screw-air-compressor/55kw.doc"
+                },
+                {
+                    "title": "75kW Specifications",
+                    "file": "/products/screw-air-compressor/75kw.doc"
+                }
+            ],
+            "gallery": [
+                "/products/screw-air-compressor/1.jpg",
+                "/products/screw-air-compressor/2.jpg",
+                "/products/screw-air-compressor/3.jpg",
+                "/products/screw-air-compressor/4.jpg",
+                "/products/screw-air-compressor/5.jpg",
+                "/products/screw-air-compressor/6.jpg",
+                "/products/screw-air-compressor/7.jpg",
+                "/products/screw-air-compressor/8.jpg",
+                "/products/screw-air-compressor/9.jpg",
+                "/products/screw-air-compressor/10.jpg",
+                "/products/screw-air-compressor/11.jpg"
+            ],
+            "videos": [
+                {
+                    "title": "SLT-7.5F Screw Compressor Demo",
+                    "file": "/products/screw-air-compressor/SLT-7.5F.mp4",
+                    "linked_product_slug": "screw-air-compressor"
+                }
+            ]
+        },
+        {
+            "slug": "diesel-compressor",
+            "product_name": "Diesel Portable Compressor",
+            "short_description": "Mobile diesel-powered compressors for outdoor and remote locations",
+            "overview": "Rugged diesel portable air compressors designed for construction, mining, and outdoor applications.",
+            "features": [
+                "Diesel Engine Powered",
+                "Portable Design",
+                "Heavy Duty Construction",
+                "All-Weather Operation",
+                "Easy Transport"
+            ],
+            "applications": [
+                "Construction",
+                "Mining",
+                "Road Works",
+                "Demolition"
+            ],
+            "technical_specifications": {
+                "pressure": "7-15 bar",
+                "capacity": "12-17 m³/min",
+                "power": "92kW - 132kW",
+                "other": [
+                    "Diesel Engine",
+                    "Trailer Mounted"
+                ]
+            },
+            "advantages": [
+                "No electricity required",
+                "Remote location operation",
+                "High durability",
+                "Low maintenance"
+            ],
+            "downloads": [
+                {
+                    "title": "SLTDP-12-7-92kW Specs",
+                    "file": "/products/diesel-compressor/SLTDP-12-7-92kw.xlsx"
+                },
+                {
+                    "title": "SLTDP-13-10-92kW Specs",
+                    "file": "/products/diesel-compressor/SLTDP-13-10-92kw.xlsx"
+                },
+                {
+                    "title": "SLTDP-15-13-132kW Specs",
+                    "file": "/products/diesel-compressor/SLTDP-15-13-132kw.xlsx"
+                },
+                {
+                    "title": "SLTDP-16-15-132kW Specs",
+                    "file": "/products/diesel-compressor/SLTDP-16-15-132kw.xlsx"
+                },
+                {
+                    "title": "SLTDP-17-8-132kW Specs",
+                    "file": "/products/diesel-compressor/SLTDP-17-8-132kw (1).xlsx"
+                }
+            ],
+            "gallery": [
+                "/products/diesel-compressor/1.jpg",
+                "/products/diesel-compressor/2.jpg",
+                "/products/diesel-compressor/3.jpg",
+                "/products/diesel-compressor/4.jpg",
+                "/products/diesel-compressor/5.jpg",
+                "/products/diesel-compressor/6.jpg",
+                "/products/diesel-compressor/IMG_20231004_215820=.jpg",
+                "/products/diesel-compressor/IMG_20231004_220103_1=.jpg",
+                "/products/diesel-compressor/IMG_20231004_221306_1=.jpg",
+                "/products/diesel-compressor/IMG_20231004_222026=.jpg"
+            ],
+            "videos": [
+                {
+                    "title": "Diesel Portable Compressor Demo",
+                    "file": "/products/diesel-compressor/Video.mp4",
+                    "linked_product_slug": "diesel-compressor"
+                }
+            ]
+        },
+        {
+            "slug": "nitrogen-generator",
+            "product_name": "Nitrogen Generator",
+            "short_description": "Industrial nitrogen generators for various applications",
+            "overview": "High-purity nitrogen generators for industrial, food, and pharmaceutical applications.",
+            "features": [
+                "High Purity Nitrogen",
+                "Continuous Operation",
+                "Low Operating Cost",
+                "Easy Installation",
+                "Automatic Control"
+            ],
+            "applications": [
+                "Food Packaging",
+                "Electronics Manufacturing",
+                "Pharmaceutical",
+                "Chemical Industry"
+            ],
+            "technical_specifications": {
+                "pressure": "0.1-0.8 MPa",
+                "capacity": "Varies by model",
+                "power": "Varies by model",
+                "other": [
+                    "Purity up to 99.999%",
+                    "PSA Technology"
+                ]
+            },
+            "advantages": [
+                "On-site nitrogen production",
+                "Cost-effective vs bottled nitrogen",
+                "Consistent purity levels",
+                "Low maintenance"
+            ],
+            "downloads": [],
+            "gallery": [
+                "/products/nitrogen-generator/1.jpg",
+                "/products/nitrogen-generator/4.jpg"
+            ],
+            "videos": [
+                {
+                    "title": "Nitrogen Generator Demo",
+                    "file": "/products/nitrogen-generator/制氮机.mp4",
+                    "linked_product_slug": "nitrogen-generator"
+                }
+            ]
+        },
+        {
+            "slug": "oil-free-compressor",
+            "product_name": "Oil-Free Compressor",
+            "short_description": "Clean, oil-free compressed air for sensitive applications",
+            "overview": "Oil-free air compressors providing 100% clean air for pharmaceutical, food, and electronics industries.",
+            "features": [
+                "100% Oil-Free Air",
+                "Class 0 Certification",
+                "Water Lubricated",
+                "Low Maintenance",
+                "Quiet Operation"
+            ],
+            "applications": [
+                "Pharmaceutical",
+                "Food & Beverage",
+                "Electronics",
+                "Medical"
+            ],
+            "technical_specifications": {
+                "pressure": "7-10 bar",
+                "capacity": "Varies by model",
+                "power": "3kW - 15kW+",
+                "other": [
+                    "Water Injected",
+                    "Scroll Type Available"
+                ]
+            },
+            "advantages": [
+                "Zero oil contamination risk",
+                "Clean room compatible",
+                "Lower total cost of ownership",
+                "Environmentally friendly"
+            ],
+            "downloads": [],
+            "gallery": [
+                "/products/oil-free-compressor/1.jpg",
+                "/products/oil-free-compressor/2.jpg",
+                "/products/oil-free-compressor/2(1).jpg",
+                "/products/oil-free-compressor/3.jpg",
+                "/products/oil-free-compressor/3(1).jpg",
+                "/products/oil-free-compressor/5.jpg",
+                "/products/oil-free-compressor/IMG_20220523_043746-----.jpg",
+                "/products/oil-free-compressor/IMG_20220523_044603--=.jpg",
+                "/products/oil-free-compressor/IMG_20220523_051000-=.jpg",
+                "/products/oil-free-compressor/IMG_20230621_025945.jpg-.jpg",
+                "/products/oil-free-compressor/IMG_20230621_030008.jpg-.jpg"
+            ],
+            "videos": [
+                {
+                    "title": "15kW Oil-Free Water Lubricated Compressor",
+                    "file": "/products/oil-free-compressor/15KW 无油水润滑.mp4",
+                    "linked_product_slug": "oil-free-compressor"
+                },
+                {
+                    "title": "3kW Oil-Free Scroll Compressor",
+                    "file": "/products/oil-free-compressor/3KW 无油涡旋.mp4",
+                    "linked_product_slug": "oil-free-compressor"
+                }
+            ]
+        },
+        {
+            "slug": "receiver-tank",
+            "product_name": "Air Receiver Tank",
+            "short_description": "High-quality air receiver tanks for compressed air storage",
+            "overview": "Durable air receiver tanks designed to store compressed air and stabilize pressure in industrial systems.",
+            "features": [
+                "High Pressure Rating",
+                "Corrosion Resistant",
+                "Safety Valve Included",
+                "Pressure Gauge",
+                "Drain Valve"
+            ],
+            "applications": [
+                "Industrial Plants",
+                "Manufacturing",
+                "Automotive",
+                "General Industry"
+            ],
+            "technical_specifications": {
+                "pressure": "8-16 bar",
+                "capacity": "Various sizes available",
+                "power": "N/A",
+                "other": [
+                    "Carbon Steel Construction",
+                    "CE Certified"
+                ]
+            },
+            "advantages": [
+                "Stable air pressure",
+                "Reduced compressor cycling",
+                "Moisture separation",
+                "Long service life"
+            ],
+            "downloads": [],
+            "gallery": [
+                "/products/receiver-tank/2jpg.jpg",
+                "/products/receiver-tank/3pg.jpg",
+                "/products/receiver-tank/4jpg.jpg",
+                "/products/receiver-tank/5jpg.jpg"
+            ],
+            "videos": []
+        },
+        {
+            "slug": "air-dryer",
+            "product_name": "Air Dryer",
+            "short_description": "Industrial air dryers for moisture removal from compressed air",
+            "overview": "High-efficiency refrigerated and desiccant air dryers for clean, dry compressed air.",
+            "features": [
+                "Low Dew Point",
+                "Energy Efficient",
+                "Automatic Operation",
+                "Low Pressure Drop",
+                "Reliable Performance"
+            ],
+            "applications": [
+                "Manufacturing",
+                "Painting",
+                "Pneumatic Tools",
+                "Instrumentation"
+            ],
+            "technical_specifications": {
+                "pressure": "Up to 16 bar",
+                "capacity": "1.2 - 45+ m³/min",
+                "power": "Various",
+                "other": [
+                    "Refrigerated Type",
+                    "Desiccant Type Available"
+                ]
+            },
+            "advantages": [
+                "Prevents corrosion",
+                "Protects equipment",
+                "Improves product quality",
+                "Reduces maintenance"
+            ],
+            "downloads": [],
+            "gallery": [],
+            "videos": []
+        },
+        {
+            "slug": "4-in-1-air-compressor",
+            "product_name": "4-in-1 Air Compressor",
+            "short_description": "All-in-one integrated compressor solution with dryer, filter, and tank",
+            "overview": "Complete integrated air compressor system combining compressor, dryer, filter, and tank in one unit.",
+            "features": [
+                "All-in-One Design",
+                "Space Saving",
+                "Easy Installation",
+                "Integrated Air Dryer",
+                "Built-in Air Tank"
+            ],
+            "applications": [
+                "Laser Cutting",
+                "Small Workshops",
+                "Limited Space Installations",
+                "Manufacturing"
+            ],
+            "technical_specifications": {
+                "pressure": "7-10 bar",
+                "capacity": "Varies by model",
+                "power": "7.5kW - 15kW",
+                "other": [
+                    "Variable Frequency Available",
+                    "Fixed Speed Available"
+                ]
+            },
+            "advantages": [
+                "Compact footprint",
+                "Lower installation cost",
+                "Plug and play operation",
+                "Reduced maintenance points"
+            ],
+            "downloads": [
+                {
+                    "title": "7.5kW 4-in-1 Parameters",
+                    "file": "/products/4-in-1-air-compressor/7.5kw四合一参数表.pdf"
+                },
+                {
+                    "title": "11kW 4-in-1 Parameters",
+                    "file": "/products/4-in-1-air-compressor/11kw四合一参数表.pdf"
+                },
+                {
+                    "title": "15kW 4-in-1 Parameters",
+                    "file": "/products/4-in-1-air-compressor/15kw四合一参数表.pdf"
+                }
+            ],
+            "gallery": [
+                "/products/4-in-1-air-compressor/1.jpg",
+                "/products/4-in-1-air-compressor/2.jpg",
+                "/products/4-in-1-air-compressor/4.jpg"
+            ],
+            "videos": []
+        }
+    ],
+    "globalVideos": [
+        {
+            "title": "SLT-7.5F Screw Compressor Demo",
+            "file": "/products/screw-air-compressor/SLT-7.5F.mp4",
+            "product_slug": "screw-air-compressor"
+        },
+        {
+            "title": "Diesel Portable Compressor Demo",
+            "file": "/products/diesel-compressor/Video.mp4",
+            "product_slug": "diesel-compressor"
+        },
+        {
+            "title": "Nitrogen Generator Demo",
+            "file": "/products/nitrogen-generator/制氮机.mp4",
+            "product_slug": "nitrogen-generator"
+        },
+        {
+            "title": "15kW Oil-Free Water Lubricated Compressor",
+            "file": "/products/oil-free-compressor/15KW 无油水润滑.mp4",
+            "product_slug": "oil-free-compressor"
+        },
+        {
+            "title": "3kW Oil-Free Scroll Compressor",
+            "file": "/products/oil-free-compressor/3KW 无油涡旋.mp4",
+            "product_slug": "oil-free-compressor"
+        }
+    ]
+}
