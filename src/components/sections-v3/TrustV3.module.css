@@ -1,0 +1,265 @@
+/* ═══════════════════════════════════════════════════════════
+   TrustV3.module.css  —  Landing Page 2
+   "Why Switch to Indus Air" Section | 2x2 Glassmorphism Grid
+   Primary: #FF7A00  |  Navy: #07122E
+═══════════════════════════════════════════════════════════ */
+
+/* ════════════════════════════
+   SECTION WRAPPER
+════════════════════════════ */
+.section {
+    position: relative;
+    padding: 100px 0 90px;
+    background: #07122e;
+    overflow: hidden;
+}
+
+.bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bgDots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,122,0,0.055) 1px, transparent 1px);
+    background-size: 28px 28px;
+}
+
+.bgGlow {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 55% 45% at 90% 15%, rgba(255,122,0,0.07) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 50% at 10% 85%, rgba(255,122,0,0.06) 0%, transparent 65%);
+}
+
+.inner {
+    position: relative;
+    z-index: 1;
+}
+
+/* ════════════════════════════
+   HEADER
+════════════════════════════ */
+.header {
+    text-align: center;
+    margin-bottom: 56px;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #FF7A00;
+    background: rgba(255,122,0,0.1);
+    border: 1px solid rgba(255,122,0,0.25);
+    padding: 6px 20px;
+    border-radius: 999px;
+    margin-bottom: 22px;
+}
+
+.title {
+    font-size: clamp(26px, 3.8vw, 44px);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    margin: 0 auto 18px;
+    max-width: 800px;
+}
+
+.titleOrange {
+    color: #FF7A00;
+    text-shadow: 0 0 28px rgba(255,122,0,0.32);
+}
+
+.titleBar {
+    width: 72px;
+    height: 3px;
+    background: linear-gradient(90deg, #FF7A00, #ff5500);
+    border-radius: 999px;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 12px rgba(255,122,0,0.45);
+    animation: barExpand 0.7s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes barExpand {
+    from { width: 0; opacity: 0; }
+    to   { width: 72px; opacity: 1; }
+}
+
+/* ════════════════════════════
+   2x2 GRID
+════════════════════════════ */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* ════════════════════════════
+   FEATURE CARD (Glassmorphism & dark blue background)
+════════════════════════════ */
+.card {
+    background: rgba(13, 31, 74, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 122, 0, 0.15);
+    border-radius: 20px;
+    padding: 36px 30px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    box-shadow: 
+        0 8px 32px 0 rgba(7, 18, 46, 0.37),
+        0 0 40px rgba(255,122,0,0.02);
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        background 0.3s ease;
+    cursor: default;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.card:hover {
+    border-color: rgba(255, 122, 0, 0.55);
+    background: rgba(13, 31, 74, 0.6);
+    box-shadow:
+        0 20px 52px rgba(7, 18, 46, 0.65),
+        0 0 32px rgba(255, 122, 0, 0.18);
+}
+
+/* ════════════════════════════
+   ICON CONTAINER & CIRCLE
+════════════════════════════ */
+.iconContainer {
+    flex-shrink: 0;
+}
+
+.iconCircle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 122, 0, 0.22) 0%, rgba(255, 85, 0, 0.12) 100%);
+    border: 1.5px solid rgba(255, 122, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+    animation: iconPulse 3.5s ease-in-out infinite;
+    z-index: 1;
+}
+
+.iconSvg {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconSvg svg {
+    width: 26px;
+    height: 26px;
+    stroke: #FF7A00;
+}
+
+@keyframes iconPulse {
+    0%,  100% { box-shadow: 0 0 0 0 rgba(255,122,0,0); }
+    50%        { box-shadow: 0 0 0 6px rgba(255,122,0,0.12); }
+}
+
+.card:hover .iconCircle {
+    background: linear-gradient(135deg, rgba(255, 122, 0, 0.34) 0%, rgba(255, 85, 0, 0.2) 100%);
+    border-color: rgba(255, 122, 0, 0.8);
+    box-shadow: 0 0 20px rgba(255, 122, 0, 0.45);
+    animation: none;
+}
+
+/* Glow behind icon */
+.iconGlow {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 122, 0, 0.2) 0%, transparent 65%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.card:hover .iconGlow {
+    opacity: 1;
+}
+
+/* ════════════════════════════
+   CARD CONTENT
+════════════════════════════ */
+.cardContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 4px;
+}
+
+.cardTitle {
+    font-size: 19px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.35;
+    transition: color 0.25s ease;
+}
+
+.card:hover .cardTitle {
+    color: #FF7A00;
+}
+
+.cardDesc {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.58);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ════════════════════════════
+   RESPONSIVE
+════════════════════════════ */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 550px;
+    }
+    
+    .card {
+        padding: 30px 24px;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 72px 0 64px;
+    }
+
+    .cardTitle {
+        font-size: 17px;
+    }
+
+    .title {
+        font-size: clamp(22px, 6vw, 32px);
+    }
+}

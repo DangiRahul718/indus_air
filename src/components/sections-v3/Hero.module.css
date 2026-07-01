@@ -1,0 +1,384 @@
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: var(--space-4xl) 0;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-dark-alt) 40%, var(--color-blue-dark) 100%);
+    z-index: 0;
+}
+
+.background::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 20%, rgba(220, 20, 60, 0.15) 0%, transparent 50%);
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+}
+
+/* Text Content */
+.textContent {
+    color: var(--color-bg-white);
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: rgba(220, 20, 60, 0.2);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary);
+    margin-bottom: var(--space-lg);
+    animation: fadeIn 0.6s ease;
+}
+
+.title {
+    font-size: clamp(32px, 4.5vw, 56px);
+    font-weight: var(--font-weight-extrabold);
+    line-height: 1.2;
+    margin-bottom: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.titleLine1 {
+    display: block;
+    white-space: nowrap;
+}
+
+.titleLine2,
+.titleLine3 {
+    display: block;
+}
+
+/* White text for "Durable" and "Reliable" */
+.outlineText {
+    color: #ffffff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.outlineText:hover {
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+}
+
+/* Ampersand styling - pulsing red */
+.ampersand {
+    color: var(--color-primary);
+    font-style: italic;
+    font-weight: var(--font-weight-bold);
+    opacity: 0.9;
+    display: inline-block;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* Red highlight for "Air Compressor" */
+.highlight {
+    color: var(--color-primary);
+    position: relative;
+    font-weight: var(--font-weight-extrabold);
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, transparent 100%);
+    border-radius: 4px;
+}
+
+/* White text for "Manufacturer" */
+.gradientText {
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.9em;
+    font-weight: var(--font-weight-bold);
+    transition: all 0.4s ease;
+}
+
+.gradientText:hover {
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+}
+
+.subtitle {
+    font-size: var(--font-size-lg);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-xl);
+    max-width: 500px;
+    animation: fadeIn 1s ease;
+}
+
+.ctas {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-3xl);
+    animation: fadeIn 1.2s ease;
+}
+
+.ctas a:last-child {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--color-bg-white);
+}
+
+.ctas a:last-child:hover {
+    background-color: var(--color-bg-white);
+    color: var(--color-text);
+}
+
+/* Stats */
+.stats {
+    display: flex;
+    gap: var(--space-2xl);
+    animation: fadeIn 1.4s ease;
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.statNumber {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--color-primary);
+}
+
+.statLabel {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Product Tabs */
+.productTabs {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideIn 1s ease;
+}
+
+.tabsHeader {
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-family: inherit;
+}
+
+.tab:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--color-bg-white);
+}
+
+.tabActive {
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+}
+
+.tabIcon {
+    font-size: 24px;
+}
+
+.tabName {
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    text-align: center;
+}
+
+.tabContent {
+    padding: var(--space-xl);
+}
+
+.productPreview {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: center;
+}
+
+.productImage {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.imagePlaceholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2a2a4a 0%, #1a1a3a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+}
+
+.productInfo {
+    color: var(--color-bg-white);
+}
+
+.productInfo h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-sm);
+    color: var(--color-bg-white);
+}
+
+.productInfo p {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: var(--space-md);
+}
+
+/* Scroll Indicator */
+.scrollIndicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: var(--font-size-xs);
+    animation: bounce 2s infinite;
+}
+
+.scrollArrow {
+    width: 24px;
+    height: 24px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .content {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+    }
+
+    .textContent {
+        text-align: center;
+    }
+
+    .subtitle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .ctas {
+        justify-content: center;
+    }
+
+    .stats {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding: var(--space-4xl) 0 var(--space-3xl);
+    }
+
+    .ctas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stats {
+        gap: var(--space-lg);
+    }
+
+    .statNumber {
+        font-size: var(--font-size-3xl);
+    }
+
+    .tabsHeader {
+        flex-wrap: wrap;
+    }
+
+    .tab {
+        width: 50%;
+    }
+
+    .productPreview {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .scrollIndicator {
+        display: none;
+    }
+}
