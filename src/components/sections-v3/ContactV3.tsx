@@ -36,6 +36,12 @@ export default function ContactV3() {
 
     return (
         <section ref={ref} className={styles.section} id="quote-form">
+            {/* Background */}
+            <div className={styles.bg} aria-hidden>
+                <div className={styles.bgDots} />
+                <div className={styles.bgGlow} />
+            </div>
+
             <div className={`container ${styles.inner}`}>
                 {/* Section Header */}
                 <motion.div
