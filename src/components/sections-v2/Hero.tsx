@@ -57,7 +57,7 @@ export default function Hero() {
                 try {
                     quoteBtnLi.removeChild(callBtn);
                 } catch (e) {
-                    console.log('Error removing call button', e);
+                    // Ignore error on cleanup
                 }
             }
         };
@@ -72,16 +72,38 @@ export default function Hero() {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [honeypot, setHoneypot] = useState('');
+    const [error, setError] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
+        setError('');
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        // Honeypot check
+        if (honeypot) {
+            setIsSubmitted(true);
+            return;
+        }
+
+        // Basic validation
+        if (!formData.yourName || !formData.phoneNumber || !formData.companyName || !formData.productNeeded || !formData.requirementDetails) {
+            setError('Please fill in all required fields.');
+            return;
+        }
+
+        const phoneClean = formData.phoneNumber.replace(/[\s\-\+\(\)]/g, '');
+        if (phoneClean.length < 7 || phoneClean.length > 15 || !/^\d+$/.test(phoneClean)) {
+            setError('Please enter a valid phone number.');
+            return;
+        }
+
         setIsSubmitting(true);
 
         // Construct mailto link
@@ -172,6 +194,18 @@ export default function Hero() {
                         display: none !important;
                     }
                 }
+
+                @media (max-width: 360px) {
+                    .landing-v2-page li[class*="navCta"] a[class*="quoteButton"] {
+                        padding: 6px 10px !important;
+                        font-size: 11px !important;
+                    }
+                    .landing-v2-call-btn {
+                        padding: 6px 8px !important;
+                        font-size: 11px !important;
+                        margin-right: 2px !important;
+                    }
+                }
             `}} />
 
             <div className={styles.background}>
@@ -255,6 +289,26 @@ export default function Hero() {
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} className={styles.form}>
+                            {error && (
+                                <div style={{ color: 'var(--color-primary)', fontSize: '14px', marginBottom: '15px', fontWeight: 'bold' }} role="alert">
+                                    ⚠️ {error}
+                                </div>
+                            )}
+
+                            {/* Honeypot hidden field for anti-spam */}
+                            <div style={{ display: 'none' }} aria-hidden="true">
+                                <label htmlFor="website">Website</label>
+                                <input
+                                    type="text"
+                                    id="website"
+                                    name="website"
+                                    value={honeypot}
+                                    onChange={(e) => setHoneypot(e.target.value)}
+                                    tabIndex={-1}
+                                    autoComplete="off"
+                                />
+                            </div>
+
                             <div className={styles.formGroup}>
                                 <input
                                     type="text"
@@ -265,6 +319,7 @@ export default function Hero() {
                                     onChange={handleChange}
                                     required
                                     className={styles.input}
+                                    aria-label="Your Full Name"
                                 />
                             </div>
 
@@ -279,6 +334,7 @@ export default function Hero() {
                                         onChange={handleChange}
                                         required
                                         className={styles.input}
+                                        aria-label="Phone Number"
                                     />
                                 </div>
                                 <div className={styles.formGroup}>
@@ -291,6 +347,7 @@ export default function Hero() {
                                         onChange={handleChange}
                                         required
                                         className={styles.input}
+                                        aria-label="Company or Business Name"
                                     />
                                 </div>
                             </div>
@@ -303,6 +360,7 @@ export default function Hero() {
                                     onChange={handleChange}
                                     required
                                     className={styles.select}
+                                    aria-label="Select Product Needed"
                                 >
                                     <option value="" disabled>Select Product Needed *</option>
                                     {productCategories.map((cat) => (
@@ -323,6 +381,7 @@ export default function Hero() {
                                     required
                                     className={styles.textarea}
                                     rows={4}
+                                    aria-label="Requirement Details"
                                 />
                             </div>
 

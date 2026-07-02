@@ -55,7 +55,7 @@
 }
 
 .title {
-    font-size: clamp(32px, 4.5vw, 56px);
+    font-size: clamp(24px, 6vw, 56px);
     font-weight: var(--font-weight-extrabold);
     line-height: 1.2;
     margin-bottom: var(--space-lg);
@@ -66,7 +66,6 @@
 
 .titleLine1 {
     display: block;
-    white-space: nowrap;
 }
 
 .titleLine2,
@@ -526,5 +525,11 @@
     .statItem {
         align-items: center;
         text-align: center;
+    }
+}
+
+@media (max-width: 360px) {
+    .stats {
+        grid-template-columns: 1fr;
     }
 }

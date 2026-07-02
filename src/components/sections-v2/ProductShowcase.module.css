@@ -376,9 +376,7 @@
         margin: 0 auto;
         width: 100%;
     }
-}
-
-@media (max-width: 400px) {
+    
     .cardTop {
         flex-direction: column;
         height: auto;

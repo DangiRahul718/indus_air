@@ -256,14 +256,9 @@
         row-gap: 32px;
     }
 
-    /* Hide connector track on tablet (too complex for 2 rows) */
-    .connectorTrack {
-        display: none;
-    }
-
-    /* Also hide the inline arrow SVG connectors on 3rd and 6th steps */
-    .stepCard:nth-child(3) .arrowConnector,
-    .stepCard:nth-child(6) .arrowConnector {
+    /* Hide connector track and inline arrow connectors on tablet */
+    .connectorTrack,
+    .arrowConnector {
         display: none;
     }
 }

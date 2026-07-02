@@ -51,6 +51,7 @@ export default function HeroV3() {
         company: '',
         product: '',
         details: '',
+        website: '', // Honeypot
     });
     const [submitting, setSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
@@ -65,10 +66,24 @@ export default function HeroV3() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        // Front-end honeypot check
+        if (form.website) {
+            setSubmitted(true);
+            return;
+        }
+
         if (!form.name || !form.phone || !form.company || !form.product) {
             setError('Please fill in all required fields.');
             return;
         }
+
+        const phoneClean = form.phone.replace(/[\s\-\+\(\)]/g, '');
+        if (phoneClean.length < 7 || phoneClean.length > 15 || !/^\d+$/.test(phoneClean)) {
+            setError('Please enter a valid phone number.');
+            return;
+        }
+
         setSubmitting(true);
         try {
             const res = await fetch('/api/quote', {
@@ -79,7 +94,8 @@ export default function HeroV3() {
             if (res.ok) {
                 setSubmitted(true);
             } else {
-                setError('Something went wrong. Please try again.');
+                const data = await res.json();
+                setError(data.error || 'Something went wrong. Please try again.');
             }
         } catch {
             setError('Something went wrong. Please try again.');
@@ -205,6 +221,20 @@ export default function HeroV3() {
                                 </p>
 
                                 <form onSubmit={handleSubmit} className={styles.form} noValidate>
+                                    {/* Honeypot anti-spam hidden field */}
+                                    <div style={{ display: 'none' }} aria-hidden="true">
+                                        <label htmlFor="website">Website</label>
+                                        <input
+                                            type="text"
+                                            id="website"
+                                            name="website"
+                                            value={form.website}
+                                            onChange={handleChange}
+                                            tabIndex={-1}
+                                            autoComplete="off"
+                                        />
+                                    </div>
+
                                     <div className={styles.formRow}>
                                         <div className={styles.formGroup}>
                                             <label className={styles.label} htmlFor="name">

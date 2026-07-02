@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import styles from '../layout/Footer.module.css';
 
 const quickLinks = [
@@ -37,9 +38,11 @@ export default function FooterLanding() {
                         {/* Company Info */}
                         <div className={styles.footerColumn}>
                             <div className={styles.footerLogo}>
-                                <img
+                                <Image
                                     src="/logo.jpeg"
                                     alt="INDUSAIR - Air Compressor"
+                                    width={180}
+                                    height={50}
                                     className={styles.logoImage}
                                 />
                             </div>

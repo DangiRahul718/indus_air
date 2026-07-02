@@ -1,24 +1,17 @@
-import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import Hero from '@/components/sections-v2/Hero';
-import ProductShowcase from '@/components/sections-v2/ProductShowcase';
-import WhyChooseUs from '@/components/sections-v2/WhyChooseUs';
-import Applications from '@/components/sections-v2/Applications';
-import Testimonials from '@/components/sections-v2/Testimonials';
-import ProductionProcess from '@/components/sections-v2/ProductionProcess';
-import QualityControl from '@/components/sections-v2/QualityControl';
-import QuoteForm from '@/components/sections-v2/QuoteForm';
-import ServiceSupport from '@/components/sections-v2/ServiceSupport';
-import FAQ from '@/components/sections-v2/FAQ';
 import AnimatedHomePage from '@/components/ui/AnimatedHomePage';
 
-export const metadata: Metadata = {
-    title: 'Air Compressor Manufacturer | Indus Air Compressor',
-    description:
-        'Leading air compressor manufacturer offering screw air compressors, oil-free compressors, air dryers, nitrogen generators, and industrial compressed air solutions.',
-    alternates: {
-        canonical: 'https://www.indusaircompressor.com/compressor-manufacturer',
-    },
-};
+// Dynamic imports for below-the-fold components
+const ProductShowcase = dynamic(() => import('@/components/sections-v2/ProductShowcase'));
+const WhyChooseUs = dynamic(() => import('@/components/sections-v2/WhyChooseUs'));
+const Applications = dynamic(() => import('@/components/sections-v2/Applications'));
+const Testimonials = dynamic(() => import('@/components/sections-v2/Testimonials'));
+const ProductionProcess = dynamic(() => import('@/components/sections-v2/ProductionProcess'));
+const QualityControl = dynamic(() => import('@/components/sections-v2/QualityControl'));
+const QuoteForm = dynamic(() => import('@/components/sections-v2/QuoteForm'));
+const ServiceSupport = dynamic(() => import('@/components/sections-v2/ServiceSupport'));
+const FAQ = dynamic(() => import('@/components/sections-v2/FAQ'));
 
 export default function CompressorManufacturerPage() {
     return (

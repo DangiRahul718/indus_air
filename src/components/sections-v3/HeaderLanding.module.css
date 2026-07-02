@@ -355,3 +355,30 @@
         display: none;
     }
 }
+
+@media (max-width: 380px) {
+    .btnCallNow,
+    .btnQuote {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+    .ctaGroup {
+        gap: 6px;
+    }
+    .logoImage {
+        height: 32px !important;
+    }
+}
+
+@media (max-width: 340px) {
+    .btnCallNow {
+        padding: 6px 8px;
+    }
+    .btnText {
+        display: none;
+    }
+    .btnQuote {
+        padding: 6px 8px;
+        font-size: 10.5px;
+    }
+}

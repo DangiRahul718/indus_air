@@ -15,16 +15,44 @@ export default function QuoteForm() {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [honeypot, setHoneypot] = useState('');
+    const [error, setError] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
         });
+        setError('');
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        // Honeypot check
+        if (honeypot) {
+            setIsSubmitted(true);
+            return;
+        }
+
+        // Input validation
+        if (!formData.name || !formData.email || !formData.phone || !formData.country) {
+            setError('Please fill in all required fields.');
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            setError('Please enter a valid email address.');
+            return;
+        }
+
+        const phoneClean = formData.phone.replace(/[\s\-\+\(\)]/g, '');
+        if (phoneClean.length < 7 || phoneClean.length > 15 || !/^\d+$/.test(phoneClean)) {
+            setError('Please enter a valid phone number.');
+            return;
+        }
+
         setIsSubmitting(true);
 
         // Construct mailto link
@@ -87,6 +115,26 @@ export default function QuoteForm() {
                             </div>
                         ) : (
                             <form onSubmit={handleSubmit} className={styles.form}>
+                                {error && (
+                                    <div style={{ color: 'var(--color-primary)', fontSize: '14px', marginBottom: '15px', fontWeight: 'bold' }} role="alert">
+                                        ⚠️ {error}
+                                    </div>
+                                )}
+
+                                {/* Honeypot hidden field for anti-spam */}
+                                <div style={{ display: 'none' }} aria-hidden="true">
+                                    <label htmlFor="website">Website</label>
+                                    <input
+                                        type="text"
+                                        id="website"
+                                        name="website"
+                                        value={honeypot}
+                                        onChange={(e) => setHoneypot(e.target.value)}
+                                        tabIndex={-1}
+                                        autoComplete="off"
+                                    />
+                                </div>
+
                                 <div className={styles.formGroup}>
                                     <input
                                         type="text"
@@ -96,6 +144,7 @@ export default function QuoteForm() {
                                         onChange={handleChange}
                                         required
                                         className={styles.input}
+                                        aria-label="Full Name"
                                     />
                                 </div>
 
@@ -109,6 +158,7 @@ export default function QuoteForm() {
                                             onChange={handleChange}
                                             required
                                             className={styles.input}
+                                            aria-label="Email Address"
                                         />
                                     </div>
                                     <div className={styles.formGroup}>
@@ -120,6 +170,7 @@ export default function QuoteForm() {
                                             onChange={handleChange}
                                             required
                                             className={styles.input}
+                                            aria-label="Phone Number"
                                         />
                                     </div>
                                 </div>
@@ -131,6 +182,7 @@ export default function QuoteForm() {
                                         onChange={handleChange}
                                         required
                                         className={styles.select}
+                                        aria-label="Select Country"
                                     >
                                         <option value="">Select Country *</option>
                                         {countries.map((country) => (
@@ -147,6 +199,7 @@ export default function QuoteForm() {
                                         onChange={handleChange}
                                         className={styles.textarea}
                                         rows={4}
+                                        aria-label="Requirement details or message"
                                     />
                                 </div>
 

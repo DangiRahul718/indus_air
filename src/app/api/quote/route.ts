@@ -59,19 +59,19 @@ export async function POST(request: NextRequest) {
 
     try {
         const body = await request.json();
-        const { name, email, phone, country, message, website } = body;
+        const { name, phone, company, product, details, website } = body;
 
         // 2. Honeypot check (hidden field filled by bots)
         if (website) {
             // Silently discard spam and return 200 success
             return NextResponse.json(
-                { success: true, message: 'Message sent successfully (spam check passed)' },
+                { success: true, message: 'Form submitted successfully (spam check passed)' },
                 { status: 200 }
             );
         }
 
         // 3. Input Validation
-        if (!name || !email || !phone || !country) {
+        if (!name || !phone || !company || !product) {
             return NextResponse.json(
                 { error: 'Missing required fields' },
                 { status: 400 }
@@ -82,15 +82,6 @@ export async function POST(request: NextRequest) {
         if (name.length < 2 || name.length > 100) {
             return NextResponse.json(
                 { error: 'Invalid name length' },
-                { status: 400 }
-            );
-        }
-
-        // Validate email format
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return NextResponse.json(
-                { error: 'Invalid email address format' },
                 { status: 400 }
             );
         }
@@ -106,10 +97,10 @@ export async function POST(request: NextRequest) {
 
         // 4. Input Sanitization
         const sanitizedName = sanitizeString(name);
-        const sanitizedEmail = sanitizeString(email);
         const sanitizedPhone = sanitizeString(phone);
-        const sanitizedCountry = sanitizeString(country);
-        const sanitizedMessage = sanitizeString(message || '');
+        const sanitizedCompany = sanitizeString(company);
+        const sanitizedProduct = sanitizeString(product);
+        const sanitizedDetails = sanitizeString(details || '');
 
         // 5. Send Email via Resend
         const resend = new Resend(process.env.RESEND_API_KEY || 'mock_key');
@@ -118,38 +109,38 @@ export async function POST(request: NextRequest) {
         if (!process.env.RESEND_API_KEY) {
             console.log('MOCK EMAIL SEND (Missing RESEND_API_KEY):', {
                 to: 'roker94023@icubik.com',
-                subject: `New Contact Form Submission from ${sanitizedName}`,
-                data: { sanitizedName, sanitizedEmail, sanitizedPhone, sanitizedCountry, sanitizedMessage }
+                subject: `New B2B Lead from ${sanitizedName}`,
+                data: { sanitizedName, sanitizedPhone, sanitizedCompany, sanitizedProduct, sanitizedDetails }
             });
             return NextResponse.json(
-                { success: true, message: 'Message received successfully (mock mode)' },
+                { success: true, message: 'Lead received successfully (mock mode)' },
                 { status: 200 }
             );
         }
 
         const { data, error } = await resend.emails.send({
-            from: 'Contact Form <onboarding@resend.dev>',
+            from: 'Indus Air Leads <onboarding@resend.dev>',
             to: 'roker94023@icubik.com',
-            subject: `New Contact Form Submission from ${sanitizedName}`,
+            subject: `New B2B Quote Lead: ${sanitizedName}`,
             html: `
-                <h2>New Contact Form Submission</h2>
+                <h2>New Quote Request (B2B Lead)</h2>
                 <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
                 <hr />
                 <p><strong>Name:</strong> ${sanitizedName}</p>
-                <p><strong>Email:</strong> ${sanitizedEmail}</p>
+                <p><strong>Company:</strong> ${sanitizedCompany}</p>
                 <p><strong>Phone:</strong> ${sanitizedPhone}</p>
-                <p><strong>Country:</strong> ${sanitizedCountry}</p>
-                <p><strong>Message:</strong></p>
-                <p>${sanitizedMessage || 'No message provided'}</p>
+                <p><strong>Product Needed:</strong> ${sanitizedProduct}</p>
+                <p><strong>Requirement Details:</strong></p>
+                <p>${sanitizedDetails || 'No additional details provided'}</p>
                 <hr />
-                <p><em>This email was securely processed and sent from the Indus Air website contact form.</em></p>
+                <p><em>This lead was securely processed and sent from the Indus Air landing page form.</em></p>
             `,
         });
 
         if (error) {
             console.error('Resend error:', error);
             return NextResponse.json(
-                { error: 'Failed to send email' },
+                { error: 'Failed to send lead notification' },
                 { status: 500 }
             );
         }

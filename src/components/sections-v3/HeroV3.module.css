@@ -555,7 +555,7 @@
     }
 
     .headline {
-        font-size: clamp(32px, 8vw, 48px);
+        font-size: clamp(24px, 7vw, 42px);
     }
 
     .trustBar {
@@ -587,5 +587,16 @@
     .btnSecondary {
         justify-content: center;
         text-align: center;
+    }
+
+    .trustCard {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .formCard {
+        padding: 24px 16px;
     }
 }

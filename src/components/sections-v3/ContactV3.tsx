@@ -15,23 +15,66 @@ export default function ContactV3() {
         companyName: '',
         productRequired: '',
         details: '',
+        website: '', // Honeypot
     });
     const [submitted, setSubmitted] = useState(false);
+    const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
+        setError('');
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        
+        // Honeypot check
+        if (formData.website) {
+            setSubmitted(true);
+            return;
+        }
+
         if (!formData.fullName || !formData.phoneNumber || !formData.companyName) {
             setError('Please fill in all required fields.');
             return;
         }
+
+        const phoneClean = formData.phoneNumber.replace(/[\s\-\+\(\)]/g, '');
+        if (phoneClean.length < 7 || phoneClean.length > 15 || !/^\d+$/.test(phoneClean)) {
+            setError('Please enter a valid phone number.');
+            return;
+        }
+
+        setSubmitting(true);
         setError('');
-        setSubmitted(true);
+
+        try {
+            const res = await fetch('/api/quote', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: formData.fullName,
+                    phone: formData.phoneNumber,
+                    company: formData.companyName,
+                    product: formData.productRequired || 'General Inquiry',
+                    details: formData.details,
+                    website: formData.website,
+                }),
+            });
+
+            if (res.ok) {
+                setSubmitted(true);
+            } else {
+                const data = await res.json();
+                setError(data.error || 'Something went wrong. Please try again.');
+            }
+        } catch {
+            setError('Something went wrong. Please try again.');
+        } finally {
+            setSubmitting(false);
+        }
     };
 
     return (
@@ -135,7 +178,21 @@ export default function ContactV3() {
                             ) : (
                                 /* Form Element */
                                 <form onSubmit={handleSubmit} className={styles.form}>
-                                    {error && <div className={styles.errorAlert}>{error}</div>}
+                                    {error && <div className={styles.errorAlert} style={{ color: 'var(--color-primary)', fontWeight: 'bold', marginBottom: '15px' }} role="alert">⚠️ {error}</div>}
+
+                                    {/* Honeypot hidden input */}
+                                    <div style={{ display: 'none' }} aria-hidden="true">
+                                        <label htmlFor="website">Website</label>
+                                        <input
+                                            type="text"
+                                            id="website"
+                                            name="website"
+                                            value={formData.website}
+                                            onChange={handleChange}
+                                            tabIndex={-1}
+                                            autoComplete="off"
+                                        />
+                                    </div>
 
                                     <div className={styles.inputGroup}>
                                         <label className={styles.label} htmlFor="fullName">Full Name *</label>
@@ -211,8 +268,8 @@ export default function ContactV3() {
                                         />
                                     </div>
 
-                                    <button type="submit" className={styles.submitButton}>
-                                        <span>Get Free Quote →</span>
+                                    <button type="submit" className={styles.submitButton} disabled={submitting}>
+                                        <span>{submitting ? 'Submitting...' : 'Get Free Quote →'}</span>
                                         <span className={styles.submitShine} />
                                     </button>
 
