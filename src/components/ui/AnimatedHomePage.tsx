@@ -20,6 +20,31 @@ export default function AnimatedHomePage({ children }: AnimatedHomePageProps) {
         if (!containerRef.current) return;
 
         const ctx = gsap.context(() => {
+            const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
+
+            if (isMobile) {
+                // Instantly show everything on mobile to bypass transitions and save CPU
+                gsap.set(
+                    '.hero-animate-badge, .hero-animate-title, .hero-animate-subtitle, .hero-animate-cta, ' +
+                    '.products-animate-title, .product-card-animate, .why-animate-badge, .why-animate-title, ' +
+                    '.benefit-card-animate, .stat-animate, .app-animate-title, .app-card-animate, ' +
+                    '.testimonial-animate-title, .testimonial-card-animate, .process-animate-title, ' +
+                    '.process-animate-subtitle, .process-step-animate, .process-step-number, ' +
+                    '.quality-animate-title, .quality-animate-subtitle, .quality-card-animate, ' +
+                    '.quality-check-icon, .quality-animate-badge, .blog-animate-title, .blog-card-animate, ' +
+                    '.quote-animate-content, .faq-animate-title, .faq-item-animate',
+                    { opacity: 1, y: 0, x: 0, scale: 1, rotateX: 0, rotateY: 0, rotateZ: 0 }
+                );
+                return;
+            }
+
+            // ========== HERO SECTION ==========
+            // Hero heading, subheading, badge, and CTA buttons render immediately
+            gsap.set(
+                '.hero-animate-badge, .hero-animate-title, .hero-animate-subtitle, .hero-animate-cta',
+                { opacity: 1, y: 0, scale: 1, rotateX: 0 }
+            );
+
             const safeFromTo = (selector: string, fromVars: gsap.TweenVars, toVars: gsap.TweenVars) => {
                 if (document.querySelectorAll(selector).length > 0) {
                     gsap.fromTo(selector, fromVars, toVars);
@@ -31,32 +56,6 @@ export default function AnimatedHomePage({ children }: AnimatedHomePageProps) {
                     gsap.to(selector, vars);
                 }
             };
-
-            // ========== HERO SECTION ==========
-            // Hero text reveal with dramatic entrance
-            safeFromTo(
-                '.hero-animate-badge',
-                { opacity: 0, y: 30, scale: 0.8 },
-                { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: 'back.out(1.7)', delay: 0.2 }
-            );
-
-            safeFromTo(
-                '.hero-animate-title',
-                { opacity: 0, y: 60, rotateX: -20 },
-                { opacity: 1, y: 0, rotateX: 0, duration: 1, ease: 'power3.out', delay: 0.3 }
-            );
-
-            safeFromTo(
-                '.hero-animate-subtitle',
-                { opacity: 0, y: 40 },
-                { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out', delay: 0.5 }
-            );
-
-            safeFromTo(
-                '.hero-animate-cta',
-                { opacity: 0, y: 30, scale: 0.9 },
-                { opacity: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.15, ease: 'back.out(1.5)', delay: 0.7 }
-            );
 
             // Hero parallax background
             safeTo('.hero-parallax', {

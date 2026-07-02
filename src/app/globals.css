@@ -417,3 +417,36 @@ ol {
   background-color: var(--color-primary);
   color: var(--color-bg-white);
 }
+
+/* ══════════════════════════════════════════
+   MOBILE PERFORMANCE OPTIMIZATIONS (< 768px)
+   ══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Disable heavy visual filters and complex effects */
+  *, *::before, *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    text-shadow: none !important;
+    transition-duration: 0s !important;
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+
+  /* Simplify box-shadows and glowing highlights on card structures */
+  [class*="card"], 
+  [class*="Card"], 
+  [class*="glow"], 
+  [class*="Glow"], 
+  [class*="glass"], 
+  [class*="container"] {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25) !important;
+    text-shadow: none !important;
+  }
+
+  /* Stop particle element containers from rendering/displaying */
+  [class*="particles"], 
+  [class*="particle"], 
+  [class*="spotlight"] {
+    display: none !important;
+  }
+}

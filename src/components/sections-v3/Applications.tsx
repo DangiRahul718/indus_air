@@ -24,6 +24,7 @@ export default function Applications() {
                                     fill
                                     className={styles.appImage}
                                     sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                                    quality={75}
                                 />
                                 <div className={styles.overlay}>
                                     <h3 className={styles.appTitle}>{app.title}</h3>

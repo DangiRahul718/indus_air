@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import HeaderLanding from '@/components/sections-v3/HeaderLanding';
+import MobileMotionProvider from '@/components/ui/MobileMotionProvider';
 
 export const metadata: Metadata = {
     title: 'Industrial Air Compressor in Ahmedabad | Indus Air Compressor',
@@ -174,7 +175,9 @@ export default function LandingLayout({
             <HeaderLanding />
 
             {/* Page sections */}
-            {children}
+            <MobileMotionProvider>
+                {children}
+            </MobileMotionProvider>
         </div>
     );
 }

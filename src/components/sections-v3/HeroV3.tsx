@@ -117,50 +117,26 @@ export default function HeroV3() {
                 {/* ══════════════ LEFT — 40% ══════════════ */}
                 <div className={styles.left}>
                     {/* Badge */}
-                    <motion.span
-                        className={styles.topBadge}
-                        variants={fadeUp}
-                        initial="hidden"
-                        animate={inView ? 'visible' : 'hidden'}
-                        custom={0}
-                    >
+                    <span className={styles.topBadge}>
                         <span className={styles.badgeDot} />
                         ISO 9001:2000 Certified Manufacturer
-                    </motion.span>
+                    </span>
 
                     {/* Headline */}
-                    <motion.h1
-                        className={styles.headline}
-                        variants={fadeUp}
-                        initial="hidden"
-                        animate={inView ? 'visible' : 'hidden'}
-                        custom={1}
-                    >
+                    <h1 className={styles.headline}>
                         <span className={styles.line1}>Industrial Air Compressors</span>
                         <span className={styles.line2}>Built to Last</span>
-                    </motion.h1>
+                    </h1>
 
                     {/* Subtext */}
-                    <motion.p
-                        className={styles.subtext}
-                        variants={fadeUp}
-                        initial="hidden"
-                        animate={inView ? 'visible' : 'hidden'}
-                        custom={2}
-                    >
+                    <p className={styles.subtext}>
                         India&apos;s trusted manufacturer of screw, oil-free, diesel and nitrogen
                         compressors.&nbsp; Factory-direct pricing, custom OEM solutions, and 24/7
                         service support.
-                    </motion.p>
+                    </p>
 
                     {/* CTA Buttons */}
-                    <motion.div
-                        className={styles.ctas}
-                        variants={fadeUp}
-                        initial="hidden"
-                        animate={inView ? 'visible' : 'hidden'}
-                        custom={3}
-                    >
+                    <div className={styles.ctas}>
                         <a href="#quote-form" className={styles.btnPrimary}>
                             Get Free Quote
                             <span className={styles.btnArrow}>→</span>
@@ -169,37 +145,27 @@ export default function HeroV3() {
                             <span className={styles.phoneIcon}>📞</span>
                             Call Now
                         </a>
-                    </motion.div>
+                    </div>
 
                     {/* Trust Badges */}
                     <div className={styles.trustBar}>
-                        {trustBadges.map((badge, i) => (
-                            <motion.div
+                        {trustBadges.map((badge) => (
+                            <div
                                 key={badge.label}
                                 className={styles.trustCard}
-                                variants={fadeUp}
-                                initial="hidden"
-                                animate={inView ? 'visible' : 'hidden'}
-                                custom={4 + i}
-                                whileHover={{ y: -3, scale: 1.03 }}
                             >
                                 <span className={styles.trustIcon}>✓</span>
                                 <div>
                                     <span className={styles.trustLabel}>{badge.label}</span>
                                     <span className={styles.trustSub}>{badge.sub}</span>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
                 </div>
 
                 {/* ══════════════ RIGHT — 60% ══════════════ */}
-                <motion.div
-                    className={styles.right}
-                    variants={slideRight}
-                    initial="hidden"
-                    animate={inView ? 'visible' : 'hidden'}
-                >
+                <div className={styles.right}>
                     <div className={styles.formCard} id="quote-form">
                         {/* Quote badge */}
                         <div className={styles.quoteBadge}>⚡ Quote in 30 minutes</div>
@@ -340,7 +306,7 @@ export default function HeroV3() {
                             </>
                         )}
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     );
