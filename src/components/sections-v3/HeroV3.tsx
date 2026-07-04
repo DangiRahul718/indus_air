@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import styles from './HeroV3.module.css';
 
@@ -45,6 +45,9 @@ export default function HeroV3() {
     const ref = useRef<HTMLElement>(null);
     const inView = useInView(ref, { once: true, margin: '-80px' });
 
+    const [mounted, setMounted] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
     const [form, setForm] = useState({
         name: '',
         phone: '',
@@ -53,6 +56,7 @@ export default function HeroV3() {
         details: '',
         website: '', // Honeypot
     });
+
     const [submitting, setSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState('');
@@ -63,6 +67,14 @@ export default function HeroV3() {
         setForm({ ...form, [e.target.name]: e.target.value });
         setError('');
     };
+
+    useEffect(() => {
+        setMounted(true);
+        const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -110,7 +122,7 @@ export default function HeroV3() {
             <div className={styles.bg}>
                 <div className={styles.bgDots} />
                 <div className={styles.bgGradient} />
-                <Particles />
+                {mounted && !isMobile && <Particles />}
             </div>
 
             <div className={`container ${styles.inner}`}>
@@ -166,7 +178,7 @@ export default function HeroV3() {
 
                 {/* ══════════════ RIGHT — 60% ══════════════ */}
                 <div className={styles.right}>
-                    <div className={styles.formCard} id="quote-form">
+                    <div className={styles.heroForm} id="quote-form">
                         {/* Quote badge */}
                         <div className={styles.quoteBadge}>⚡ Quote in 30 minutes</div>
 

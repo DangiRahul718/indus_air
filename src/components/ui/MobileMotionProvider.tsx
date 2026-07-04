@@ -7,16 +7,30 @@ export default function MobileMotionProvider({ children }: { children: React.Rea
     const [reducedMotion, setReducedMotion] = useState(false);
 
     useEffect(() => {
-        const handleResize = () => {
-            setReducedMotion(window.innerWidth <= 768);
+        if (typeof window === 'undefined') return;
+
+        const checkMotion = () => {
+            const isMobile = window.innerWidth <= 768;
+            setReducedMotion(isMobile);
         };
-        handleResize();
+
+        checkMotion();
+
+        let timeoutId: NodeJS.Timeout;
+        const handleResize = () => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(checkMotion, 150); // Debounce resize by 150ms
+        };
+
         window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            clearTimeout(timeoutId);
+        };
     }, []);
 
     return (
-        <MotionConfig transition={reducedMotion ? { duration: 0 } : undefined}>
+        <MotionConfig reducedMotion={reducedMotion ? 'always' : 'user'}>
             {children}
         </MotionConfig>
     );

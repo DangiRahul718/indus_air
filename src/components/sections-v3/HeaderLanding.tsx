@@ -59,6 +59,7 @@ export default function HeaderLanding() {
                             width={180}
                             height={50}
                             className={styles.logoImage}
+                            priority
                         />
                     </Link>
 

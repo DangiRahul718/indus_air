@@ -152,7 +152,7 @@ export default function ContactV3() {
                     <motion.div
                         className={styles.rightCol}
                         initial={{ opacity: 0, x: 40 }}
-                        animate={inView ? { opacity: 1, y: 0 } : {}}
+                        animate={inView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
                     >
                         <div className={styles.formCard}>
