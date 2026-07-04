@@ -18,11 +18,21 @@ export default function Hero() {
         let originalQuoteBtnHref: string | null = null;
         let callBtn: HTMLAnchorElement | null = null;
 
+        const scrollToForm = (e: Event) => {
+            e.preventDefault();
+            const formEl = document.getElementById('quote-form');
+            if (formEl) {
+                const y = formEl.getBoundingClientRect().top + window.scrollY - 100;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        };
+
         if (quoteBtn) {
             originalQuoteBtnText = quoteBtn.innerHTML;
             originalQuoteBtnHref = quoteBtn.getAttribute('href');
             quoteBtn.innerHTML = 'Get Free Quote';
-            quoteBtn.setAttribute('href', '#inquiry-form');
+            quoteBtn.setAttribute('href', '#quote-form');
+            quoteBtn.addEventListener('click', scrollToForm);
         }
 
         if (quoteBtnLi) {
@@ -49,6 +59,7 @@ export default function Hero() {
             document.body.classList.remove('landing-v2-page');
             
             if (quoteBtn) {
+                quoteBtn.removeEventListener('click', scrollToForm);
                 if (originalQuoteBtnText !== null) quoteBtn.innerHTML = originalQuoteBtnText;
                 if (originalQuoteBtnHref !== null) quoteBtn.setAttribute('href', originalQuoteBtnHref);
             }
@@ -155,8 +166,7 @@ export default function Hero() {
                         gap: 10px !important;
                     }
                 }
-                
-                /* 4. Call button stylesheet rules */
+                               /* 4. Call button stylesheet rules */
                 .landing-v2-call-btn {
                     font-size: 14px !important;
                     font-weight: 700 !important;
@@ -174,36 +184,59 @@ export default function Hero() {
                     white-space: nowrap !important;
                 }
                 
-                @media (max-width: 600px) {
-                    .landing-v2-page li[class*="navCta"] {
-                        gap: 6px !important;
-                    }
+                @media (max-width: 768px) {
                     .landing-v2-call-btn {
-                        padding: 8px 12px !important;
-                        font-size: 12px !important;
-                        margin-right: 5px !important;
+                        display: none !important;
+                    }
+                    .landing-v2-page [class*="topBar"] {
+                        display: none !important;
+                    }
+                    .landing-v2-page [class*="navContent"] {
+                        height: 56px !important;
+                        padding: 0 16px !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: space-between !important;
+                    }
+                    .landing-v2-page img[class*="logoImage"] {
+                        height: 32px !important;
+                        width: auto !important;
+                    }
+                    .landing-v2-page ul[class*="navLinks"] {
+                        margin: 0 !important;
+                        display: flex !important;
+                        align-items: center !important;
+                        height: auto !important;
+                    }
+                    .landing-v2-page li[class*="navCta"] {
+                        margin: 0 !important;
+                        display: flex !important;
+                        align-items: center !important;
                     }
                     .landing-v2-page li[class*="navCta"] a[class*="quoteButton"] {
-                        padding: 8px 14px !important;
+                        padding: 8px 16px !important;
                         font-size: 12px !important;
-                    }
-                }
-                
-                @media (max-width: 480px) {
-                    .landing-v2-call-btn span {
-                        display: none !important;
+                        font-weight: 700 !important;
+                        border-radius: 6px !important;
+                        white-space: nowrap !important;
+                        min-width: fit-content !important;
+                        display: inline-flex !important;
+                        align-items: center !important;
+                        line-height: 1.2 !important;
+                        margin: 0 !important;
+                        height: 36px !important;
+                        box-sizing: border-box !important;
                     }
                 }
 
                 @media (max-width: 360px) {
-                    .landing-v2-page li[class*="navCta"] a[class*="quoteButton"] {
-                        padding: 6px 10px !important;
-                        font-size: 11px !important;
+                    .landing-v2-page img[class*="logoImage"] {
+                        height: 28px !important;
                     }
-                    .landing-v2-call-btn {
-                        padding: 6px 8px !important;
+                    .landing-v2-page li[class*="navCta"] a[class*="quoteButton"] {
+                        padding: 6px 12px !important;
                         font-size: 11px !important;
-                        margin-right: 2px !important;
+                        height: 32px !important;
                     }
                 }
             `}} />
@@ -237,7 +270,11 @@ export default function Hero() {
                             size="lg" 
                             className="hero-animate-cta"
                             onClick={() => {
-                                document.getElementById('inquiry-form')?.scrollIntoView({ behavior: 'smooth' });
+                                const formEl = document.getElementById('quote-form');
+                                if (formEl) {
+                                    const y = formEl.getBoundingClientRect().top + window.scrollY - 100;
+                                    window.scrollTo({ top: y, behavior: 'smooth' });
+                                }
                             }}
                         >
                             Get Free Quote
@@ -275,7 +312,7 @@ export default function Hero() {
                     </div>
                 </div>
 
-                <div className={styles.formContainer} id="inquiry-form">
+                <div className={styles.formContainer}>
                     <span className={styles.formBadge}>ISO 9001:2000 CERTIFIED</span>
                     <h3 className={styles.formTitle}>Get a Free Quote Today</h3>
                     <p className={styles.formSubtitle}>Our expert will call you within 30 minutes.</p>

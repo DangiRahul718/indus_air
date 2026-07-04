@@ -212,11 +212,10 @@ function ProductCard({
 
 export default function ProductShowcase() {
     const handleCheckDetails = () => {
-        const formElement = document.getElementById('inquiry-form');
-        if (formElement) {
-            formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else {
-            window.location.hash = 'inquiry-form';
+        const formEl = document.getElementById('quote-form');
+        if (formEl) {
+            const y = formEl.getBoundingClientRect().top + window.scrollY - 100;
+            window.scrollTo({ top: y, behavior: 'smooth' });
         }
     };
 

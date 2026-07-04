@@ -366,15 +366,28 @@
 }
 
 @media (max-width: 768px) {
-    .gridContainer {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .showcase {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        height: auto !important;
+        overflow: visible !important;
     }
-    
+
     .card {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        animation: none !important;
         max-width: 450px;
         margin: 0 auto;
         width: 100%;
+    }
+
+    .gridContainer {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .cardTop {

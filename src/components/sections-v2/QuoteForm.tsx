@@ -69,7 +69,7 @@ export default function QuoteForm() {
     };
 
     return (
-        <section className={`section ${styles.quoteSection}`}>
+        <section id="quote-form" className={`section ${styles.quoteSection}`}>
             <div className="container">
                 <div className={styles.wrapper}>
                     <div className={styles.content}>

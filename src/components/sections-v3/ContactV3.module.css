@@ -12,6 +12,7 @@
     padding: 100px 0;
     background: #07122e;
     overflow: hidden;
+    scroll-margin-top: 80px;
 }
 
 .bg {
@@ -461,7 +462,10 @@
     }
 
     .formCard {
-        padding: 30px 20px;
+        padding: 28px 20px;
+        width: calc(100% - 32px);
+        margin: 0 auto;
+        box-sizing: border-box;
     }
     
     .title {
@@ -477,6 +481,13 @@
     .formCard {
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06) !important;
         scroll-margin-top: 110px;
+    }
+
+    .input,
+    .select,
+    .textarea {
+        font-size: 16px; /* Prevent iOS auto-zoom on focus */
+        min-height: 48px;
     }
 
     .cardTitle,
@@ -496,6 +507,13 @@
     }
 
     .submitButton:hover .submitShine {
+        animation: none !important;
+    }
+
+    .rightCol {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
         animation: none !important;
     }
 }

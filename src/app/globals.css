@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
+/* ── Global smooth scrolling ── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Universal quote-form anchor offset ── */
+#quote-form {
+  scroll-margin-top: 120px;
+}
+
 :root {
   /* Primary Colors - Sollant Brand Red */
   --color-primary: #C8102E;
@@ -427,8 +437,9 @@ ol {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     text-shadow: none !important;
-    transition: none !important;
-    animation: none !important;
+    transition-duration: 0.01s !important;
+    animation-duration: 0.01s !important;
+    animation-delay: 0s !important;
   }
 
   /* Simplify box-shadows and glowing highlights on card structures */

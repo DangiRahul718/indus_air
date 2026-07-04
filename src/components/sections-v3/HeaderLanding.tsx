@@ -14,6 +14,15 @@ export default function HeaderLanding() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const scrollToQuoteForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        const formEl = document.getElementById('quote-form');
+        if (formEl) {
+            const y = formEl.getBoundingClientRect().top + window.scrollY - 100;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    };
+
     return (
         <header className={`${styles.headerRoot} ${scrolled ? styles.scrolled : ''}`}>
 
@@ -83,6 +92,7 @@ export default function HeaderLanding() {
                             href="#quote-form"
                             className={styles.btnQuote}
                             id="header-quick-quote"
+                            onClick={scrollToQuoteForm}
                         >
                             Quick Quote
                             <span className={styles.btnArrow} aria-hidden="true">→</span>

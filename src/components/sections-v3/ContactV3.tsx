@@ -78,7 +78,7 @@ export default function ContactV3() {
     };
 
     return (
-        <section ref={ref} className={styles.section}>
+        <section ref={ref} id="quote-form" className={styles.section}>
             {/* Background */}
             <div className={styles.bg} aria-hidden>
                 <div className={styles.bgDots} />
@@ -155,7 +155,7 @@ export default function ContactV3() {
                         animate={inView ? { opacity: 1, x: 0 } : {}}
                         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
                     >
-                        <div className={styles.formCard} id="quote-form">
+                        <div className={styles.formCard}>
                             {/* Form Header */}
                             <div className={styles.formHeader}>
                                 <span className={styles.formBadge}>Quote in 30 Minutes</span>

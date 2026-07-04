@@ -76,6 +76,15 @@ export default function HeroV3() {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
+    const scrollToQuoteForm = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        const formEl = document.getElementById('quote-form');
+        if (formEl) {
+            const y = formEl.getBoundingClientRect().top + window.scrollY - 100;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
@@ -149,7 +158,7 @@ export default function HeroV3() {
 
                     {/* CTA Buttons */}
                     <div className={styles.ctas}>
-                        <a href="#hero-quote-form" className={styles.btnPrimary}>
+                        <a href="#quote-form" className={styles.btnPrimary} onClick={scrollToQuoteForm}>
                             Get Free Quote
                             <span className={styles.btnArrow}>→</span>
                         </a>
