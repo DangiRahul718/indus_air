@@ -149,7 +149,7 @@ export default function HeroV3() {
 
                     {/* CTA Buttons */}
                     <div className={styles.ctas}>
-                        <a href="#quote-form" className={styles.btnPrimary}>
+                        <a href="#hero-quote-form" className={styles.btnPrimary}>
                             Get Free Quote
                             <span className={styles.btnArrow}>→</span>
                         </a>
@@ -178,7 +178,7 @@ export default function HeroV3() {
 
                 {/* ══════════════ RIGHT — 60% ══════════════ */}
                 <div className={styles.right}>
-                    <div className={styles.heroForm} id="quote-form">
+                    <div className={styles.heroForm} id="hero-quote-form">
                         {/* Quote badge */}
                         <div className={styles.quoteBadge}>⚡ Quote in 30 minutes</div>
 
